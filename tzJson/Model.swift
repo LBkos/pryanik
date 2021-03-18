@@ -136,6 +136,7 @@ class dataVariant : NSObject, NSCoding {
 
 
 
+
 //struct test: Codable {
 //    var view: [String]?
 //    var data: [Data]
