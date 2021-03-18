@@ -25,7 +25,7 @@ struct ContentView: View {
                     
                 case "picture":
                     Text(img).onTapGesture { img = "" }
-                    URLImage(url: viewModel.url!, content: { image in
+                    URLImage(url: viewModel.url! , content: { image in
                         image
                             .resizable()
                             .frame(width: 50, height: 50)

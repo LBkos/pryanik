@@ -8,18 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4C692BF44884E96425374457 /* Pods_tzJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C90FE248BD00F817F7F1B5 /* Pods_tzJson.framework */; };
-		5303D12B25E256360040F361 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303D12A25E256360040F361 /* ApiModel.swift */; };
 		5333B0B725C42A9100CA3468 /* tzJsonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333B0B625C42A9100CA3468 /* tzJsonApp.swift */; };
 		5333B0B925C42A9100CA3468 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333B0B825C42A9100CA3468 /* ContentView.swift */; };
 		5333B0BB25C42A9200CA3468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5333B0BA25C42A9200CA3468 /* Assets.xcassets */; };
 		5333B0BE25C42A9200CA3468 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5333B0BD25C42A9200CA3468 /* Preview Assets.xcassets */; };
 		5333B0C725C43ADD00CA3468 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333B0C625C43ADD00CA3468 /* Model.swift */; };
 		5333B0CA25C43E3100CA3468 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333B0C925C43E3100CA3468 /* ViewModel.swift */; };
-		5346299A25CC149C00504085 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346299925CC149C00504085 /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5303D12A25E256360040F361 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		5333B0B325C42A9100CA3468 /* tzJson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tzJson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5333B0B625C42A9100CA3468 /* tzJsonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tzJsonApp.swift; sourceTree = "<group>"; };
 		5333B0B825C42A9100CA3468 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,7 +25,6 @@
 		5333B0BF25C42A9200CA3468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5333B0C625C43ADD00CA3468 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5333B0C925C43E3100CA3468 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		5346299925CC149C00504085 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		57C90FE248BD00F817F7F1B5 /* Pods_tzJson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tzJson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B165CC3D25D6BF7709ABFEA /* Pods-tzJson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tzJson.debug.xcconfig"; path = "Target Support Files/Pods-tzJson/Pods-tzJson.debug.xcconfig"; sourceTree = "<group>"; };
 		B6E07BEA311A2565B251E3B3 /* Pods-tzJson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tzJson.release.xcconfig"; path = "Target Support Files/Pods-tzJson/Pods-tzJson.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,9 +74,7 @@
 			children = (
 				5333B0B625C42A9100CA3468 /* tzJsonApp.swift */,
 				5333B0B825C42A9100CA3468 /* ContentView.swift */,
-				5346299925CC149C00504085 /* PickerView.swift */,
 				5333B0C925C43E3100CA3468 /* ViewModel.swift */,
-				5303D12A25E256360040F361 /* ApiModel.swift */,
 				5333B0C625C43ADD00CA3468 /* Model.swift */,
 				5333B0BA25C42A9200CA3468 /* Assets.xcassets */,
 				5333B0BF25C42A9200CA3468 /* Info.plist */,
@@ -220,9 +214,7 @@
 			files = (
 				5333B0C725C43ADD00CA3468 /* Model.swift in Sources */,
 				5333B0B925C42A9100CA3468 /* ContentView.swift in Sources */,
-				5346299A25CC149C00504085 /* PickerView.swift in Sources */,
 				5333B0CA25C43E3100CA3468 /* ViewModel.swift in Sources */,
-				5303D12B25E256360040F361 /* ApiModel.swift in Sources */,
 				5333B0B725C42A9100CA3468 /* tzJsonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,28 +5,30 @@ import Combine
 
 class ViewModel: ObservableObject {
     
-    
-    @Published var dataView: datamodel?
+    @Published var dataView: DataModel?
     @Published var view: [String]?
-    @Published var data: [dataDatum]?
+    @Published var data: [Data]?
     @Published var text = ""
     @Published var textImage = ""
     @Published var url: URL?
     @Published var selectedId: Int?
     @Published var variants : [dataVariant]!
-
-    var bag = Set<AnyCancellable>()
+    
+    private var cancellable: AnyCancellable? = nil
+    private var bag = Set<AnyCancellable>()
+    
+    init() {
+        getDataApi()
+    }
     
     func getDataApi() {
         //request data
-         AF.request("https://pryaniky.com/static/json/sample.json").publishData()
-            //.receive(on: RunLoop.main)
-            //.debounce(for: 0.5, scheduler: RunLoop.main)
+        AF.request("https://pryaniky.com/static/json/sample.json").publishData()
             .sink( receiveValue: { [self](value) in
                 switch value.result {
                 case .success(let data):
                     let json = JSON(data)
-                    self.dataView = datamodel(fromJson: json)
+                    self.dataView = DataModel(fromJson: json)
                     view = dataView?.view
                     for item in (dataView?.data) ?? [] {
                         switch item.name {
@@ -47,16 +49,25 @@ class ViewModel: ObservableObject {
                 }
             })
             .store(in: &bag)
-        
-
-    }
-    var canceleble: AnyCancellable? = nil
-    
-    
-    init() {
-        getDataApi()
-        
     }
     
-   
+    //    func getData() -> AnyPublisher<test, Error> {
+    //        let url = URL(string: "https://pryaniky.com/static/json/sample.json")
+    //        return URLSession.shared.dataTaskPublisher(for: url!)
+    //            .map { $0.data }
+    //            .decode(type: test.self, decoder: JSONDecoder())
+    //            .receive(on: RunLoop.main)
+    //            .eraseToAnyPublisher()
+    //    }
+    //    func getUsers() {
+    //       cancellable = getData().sink(receiveCompletion: { (_) in
+    //
+    //        }, receiveValue: { item in
+    //            self.dat = item
+    //            print(self.dat!)
+    //
+    //        })
+    //
+    //        }
+    
 }

@@ -1,44 +1,19 @@
 import Foundation
-
-struct test: Codable {
-    struct view {
-       var f: [String]!
-    }
-    struct data {
-        var name: String
-    struct data {
-        var url: String?
-        var text: String?
-        var selectedId: Int?
-        struct variants {
-            var id: Int?
-            var text: String?
-        }
-    }
-    }
-}
-
-
-import Foundation
 import SwiftyJSON
 
+class DataModel : NSObject, NSCoding{
 
-class datamodel : NSObject, NSCoding{
-
-    var data : [dataDatum]!
+    var data : [Data]!
     var view : [String]!
 
-    /**
-     * Instantiate the instance using the passed json values to set the properties values
-     */
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
         }
-        data = [dataDatum]()
+        data = [Data]()
         let dataArray = json["data"].arrayValue
         for dataJson in dataArray{
-            let value = dataDatum(fromJson: dataJson)
+            let value = Data(fromJson: dataJson)
             data.append(value)
         }
         view = [String]()
@@ -48,55 +23,43 @@ class datamodel : NSObject, NSCoding{
         }
     }
 
-    @objc required init(coder aDecoder: NSCoder)
-    {
-        data = aDecoder.decodeObject(forKey: "data") as? [dataDatum]
+    @objc required init(coder aDecoder: NSCoder) {
+        data = aDecoder.decodeObject(forKey: "data") as? [Data]
         view = aDecoder.decodeObject(forKey: "view") as? [String]
     }
-
     
-    func encode(with aCoder: NSCoder)
-    {
+    func encode(with aCoder: NSCoder) {
         if data != nil{
             aCoder.encode(data, forKey: "data")
         }
         if view != nil{
             aCoder.encode(view, forKey: "view")
         }
-
     }
-
 }
 
-class dataDatum : NSObject, NSCoding, Identifiable{
-    var id = UUID()
+class Data : NSObject, NSCoding {
     
-    var data : dataDatums!
+    var data : Datas!
     var name : String!
 
-    /**
-     * Instantiate the instance using the passed json values to set the properties values
-     */
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
         }
         let dataJson = json["data"]
         if !dataJson.isEmpty{
-            data = dataDatums(fromJson: dataJson)
+            data = Datas(fromJson: dataJson)
         }
         name = json["name"].stringValue
     }
-
     
-    @objc required init(coder aDecoder: NSCoder)
-    {
-        data = aDecoder.decodeObject(forKey: "data") as? dataDatums
+    @objc required init(coder aDecoder: NSCoder) {
+        data = aDecoder.decodeObject(forKey: "data") as? Datas
         name = aDecoder.decodeObject(forKey: "name") as? String
     }
 
-    func encode(with aCoder: NSCoder)
-    {
+    func encode(with aCoder: NSCoder) {
         if data != nil{
             aCoder.encode(data, forKey: "data")
         }
@@ -106,14 +69,13 @@ class dataDatum : NSObject, NSCoding, Identifiable{
     }
 }
 
-class dataDatums : NSObject, NSCoding{
+class Datas : NSObject, NSCoding{
 
     var text: String?
     var url: String?
     var selectedId : Int!
     var variants : [dataVariant]!
 
-    
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
@@ -129,33 +91,26 @@ class dataDatums : NSObject, NSCoding{
         }
     }
 
-    @objc required init(coder aDecoder: NSCoder)
-    {
+    @objc required init(coder aDecoder: NSCoder) {
         selectedId = aDecoder.decodeObject(forKey: "selectedId") as? Int
         variants = aDecoder.decodeObject(forKey: "variants") as? [dataVariant]
     }
 
-    func encode(with aCoder: NSCoder)
-    {
+    func encode(with aCoder: NSCoder) {
         if selectedId != nil{
             aCoder.encode(selectedId, forKey: "selectedId")
         }
         if variants != nil{
             aCoder.encode(variants, forKey: "variants")
         }
-
     }
-
 }
 
-class dataVariant : NSObject, NSCoding{
+class dataVariant : NSObject, NSCoding {
 
     var id : Int!
     var text : String!
 
-    /**
-     * Instantiate the instance using the passed json values to set the properties values
-     */
     init(fromJson json: JSON!){
         if json.isEmpty{
             return
@@ -164,46 +119,40 @@ class dataVariant : NSObject, NSCoding{
         text = json["text"].stringValue
     }
 
-    /**
-     * Returns all the available property values in the form of [String:Any] object where the key is the approperiate json key and the value is the value of the corresponding property
-     */
-    func toDictionary() -> [String:Any]
-    {
-        var dictionary = [String:Any]()
-        if id != nil{
-            dictionary["id"] = id
-        }
-        if text != nil{
-            dictionary["text"] = text
-        }
-        return dictionary
-    }
-
-    /**
-    * NSCoding required initializer.
-    * Fills the data from the passed decoder
-    */
-    @objc required init(coder aDecoder: NSCoder)
-    {
+    @objc required init(coder aDecoder: NSCoder) {
         id = aDecoder.decodeObject(forKey: "id") as? Int
         text = aDecoder.decodeObject(forKey: "text") as? String
     }
-
-    /**
-    * NSCoding required method.
-    * Encodes mode properties into the decoder
-    */
-    func encode(with aCoder: NSCoder)
-    {
-        if id != nil{
+    
+    func encode(with aCoder: NSCoder) {
+        if id != nil {
             aCoder.encode(id, forKey: "id")
         }
-        if text != nil{
+        if text != nil {
             aCoder.encode(text, forKey: "text")
         }
-
     }
-
 }
 
+
+
+//struct test: Codable {
+//    var view: [String]?
+//    var data: [Data]
+//
+//}
+//struct Data: Codable {
+//    var name: String
+//    var data: data?
+//}
+//struct data: Codable {
+//    var url: String?
+//    var text: String?
+//    var selectedId: Int?
+//    var variants: [variants]?
+//}
+//struct variants: Codable {
+//    var id: Int!
+//    var text: String!
+//}
 
